@@ -17,12 +17,12 @@ bot = Cinch::Bot.new do
 
     config.plugins.plugins = [
       Cinch::Plugins::Identify,
-      Stark::Plugins::Bitly,
       Stark::Plugins::Choose,
       Stark::Plugins::Dice,
       Stark::Plugins::Disapprove,
       Stark::Plugins::Google,
       Stark::Plugins::JoinPart,
+      Stark::Plugins::LinkScraper,
       Stark::Plugins::LMGTFY,
       Stark::Plugins::MessageHistory,
       Stark::Plugins::S,
