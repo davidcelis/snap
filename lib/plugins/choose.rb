@@ -5,7 +5,7 @@ module Stark
     class Choose
       include Cinch::Plugin
     
-      match /^!choose (.+)$/
+      match /choose (.+)/
     
       def execute(m, list)
         items = list.split ','

@@ -3,8 +3,8 @@ require 'cinch'
 class JoinPart
   include Cinch::Plugin
 
-  match /!join (.+)/, :method => :join
-  match /!part(?: (.+))?/, :method => :part
+  match /join (.+)/, :method => :join
+  match /part(?: (.+))?/, :method => :part
 
   def initialize(*args)
     super

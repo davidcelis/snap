@@ -5,7 +5,7 @@ module Stark
     class Dice
       include Cinch::Plugin
     
-      match /^!roll (?:(\d+))?d(\d+)(?:([+-])(\d+))?$/
+      match /roll (?:(\d+))?d(\d+)(?:([+-])(\d+))?/
     
       def execute(m, rolls, sides, operator, offset)
         score = 0

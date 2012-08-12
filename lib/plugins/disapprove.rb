@@ -6,7 +6,7 @@ module Stark
     class Disapprove
       include Cinch::Plugin
 
-      match /^!disapprove (.+)/
+      match /disapprove (.+)/
 
       def execute(m, nick)
         m.reply "#{nick}: You have shamed your house. ಠ_ಠ"
