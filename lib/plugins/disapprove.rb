@@ -7,6 +7,7 @@ module Stark
       include Cinch::Plugin
 
       match /disapprove (.+)/
+      match /lod (.+)/
 
       def execute(m, nick)
         m.reply "#{nick}: You have shamed your house. ಠ_ಠ"
