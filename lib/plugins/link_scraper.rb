@@ -47,9 +47,11 @@ module Stark
               user = $1
               json      = @agent.get("https://api.twitter.com/1/statuses/show/#{$2}.json?trim_user=1").body
               tweet     = JSON.parse(json)
-              unescaped = CGI.unescapeHTML(tweet["text"])
 
-              m.reply "@#{user}: #{unescaped}"
+              unescaped = CGI.unescapeHTML(tweet['text'])
+              time      = Time.parse(tweet['created_at']).strftime('%T on %D')
+
+              m.reply "@#{user}: #{unescaped} (at #{time})"
             else
               m.reply "Title: #{title} (at #{uri.host})"
             end
