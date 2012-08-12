@@ -36,6 +36,14 @@ bot = Cinch::Bot.new do
       :type     => :nickserv
     }
   end
+
+  on :message, /^!ping$/ do |m|
+    m.reply "#{m.user.nick}: pong!"
+  end
+
+  on :private, /^!say "(.+?)" in (#.+)$/ do |m, msg, channel|
+    Channel(channel).msg(msg) if check_user(m.user)
+  end
 end
 
 $redis = Redis.new

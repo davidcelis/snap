@@ -9,22 +9,18 @@ module Stark
       match /s\/(.+)\/(.*)\/([ig]+)?/
     
       def execute(m, original, replacement, mode)
-        case mode
-        when 'i'
-          history = $redis.lrange("#{m.channel}:#{m.user.nick}:messages", 0, 100).map { |msg| JSON.parse msg }
-          found = history.select { |msg| msg['message'] =~ /#{original}/i }.first
-        when 'g'
-          history = $redis.lrange("#{m.channel}:messages", 0, 100).map { |msg| JSON.parse msg }
-          found = history.select { |msg| msg['message'] =~ /#{original}/ }.first
-        when 'ig', 'gi'
-          history = $redis.lrange("#{m.channel}:messages", 0, 100).map { |msg| JSON.parse msg }
-          found = history.select { |msg| msg['message'] =~ /#{original}/i }.first
-        else
-          history = $redis.lrange("#{m.channel}:#{m.user.nick}:messages", 0, 100).map { |msg| JSON.parse msg }
-          found = history.select { |msg| msg['message'] =~ /#{original}/ }.first
-        end
+        regex = Regexp.new(original, mode.include?('i'))
 
-        message = found['message'].gsub(original, replacement)
+        list = if mode.include?('g')
+                 "#{m.channel}:messages"
+               else
+                 "#{m.channel}:#{m.user.nick}:messages"
+               end
+
+        history = $redis.lrange(list, 0, 100).map { |msg| JSON.parse msg }
+        found = history.select { |msg| msg['message'] =~ regex }.first
+
+        message = found['message'].gsub(regex, replacement)
         nick = found['nick']
     
         m.reply "#{nick} actually meant: #{message}"

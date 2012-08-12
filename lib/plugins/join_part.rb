@@ -11,7 +11,7 @@ module Stark
       def initialize(*args)
         super
     
-        @admins = ['davidcelis', 'loveycup']
+        @admins = ['davidcelis', 'loveinacoffeecup']
       end
     
       def check_user(user)
