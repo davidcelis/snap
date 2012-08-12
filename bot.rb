@@ -37,12 +37,21 @@ bot = Cinch::Bot.new do
     }
   end
 
+  def admins
+    ['davidcelis', 'loveinacoffeecup']
+  end
+
+  def admin?(user)
+    user.refresh
+    admins.include?(user.authname)
+  end
+
   on :message, /^!ping$/ do |m|
     m.reply "#{m.user.nick}: pong!"
   end
 
   on :private, /^!say "(.+?)" in (#.+)$/ do |m, msg, channel|
-    Channel(channel).msg(msg) if check_user(m.user)
+    Channel(channel).msg(msg) if admin?(m.user)
   end
 end
 

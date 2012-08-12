@@ -17,6 +17,8 @@ module Stark
       listen_to :channel
 
       def listen(m)
+        return if m.user == @bot
+        
         URI.extract(m.message) do |link|
           begin
             uri = URI.parse(link)
