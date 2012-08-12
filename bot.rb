@@ -20,8 +20,10 @@ bot = Cinch::Bot.new do
       Stark::Plugins::Choose,
       Stark::Plugins::Dice,
       Stark::Plugins::Disapprove,
+      Stark::Plugins::JoinPart,
       Stark::Plugins::MessageHistory,
-      Stark::Plugins::Sed
+      Stark::Plugins::Sed,
+      Stark::Plugins::Seen
     ]
 
     config.plugins.options[Cinch::Plugins::Identify] = {

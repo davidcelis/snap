@@ -27,7 +27,7 @@ module Stark
         message = found['message'].gsub(original, replacement)
         nick = found['nick']
     
-        message.reply "#{nick} actually meant: #{message}"
+        m.reply "#{nick} actually meant: #{message}"
       end
     end
   end
