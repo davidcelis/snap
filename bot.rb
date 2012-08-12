@@ -17,6 +17,7 @@ bot = Cinch::Bot.new do
 
     config.plugins.plugins = [
       Cinch::Plugins::Identify,
+      Stark::Plugins::Bitly,
       Stark::Plugins::Choose,
       Stark::Plugins::Dice,
       Stark::Plugins::Disapprove,
@@ -30,9 +31,9 @@ bot = Cinch::Bot.new do
     ]
 
     config.plugins.options[Cinch::Plugins::Identify] = {
-      :username => ident['auth']['username'],
-      :password => ident['auth']['password'],
-      :type     => ident['auth']['type'].to_sym
+      :username => ident['auth']['nickserv']['username'],
+      :password => ident['auth']['nickserv']['password'],
+      :type     => :nickserv
     }
   end
 end
