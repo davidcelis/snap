@@ -2,7 +2,7 @@ require 'cinch'
 
 module Stark
   module Plugins
-    class LMGTFY
+    class Usage
       include Cinch::Plugin
       match /usage$/
     
