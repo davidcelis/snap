@@ -9,6 +9,7 @@ module Stark
       match /s\/(.+)\/(.*)\/([ig]+)?/
     
       def execute(m, original, replacement, mode)
+        mode ||= ''
         regex = Regexp.new(original, mode.include?('i'))
 
         list = if mode.include?('g')

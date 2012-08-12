@@ -8,9 +8,9 @@ module Stark
       listen_to :channel
 
       def listen(m)
-        return if m.message =~ /^![^a-zA-Z]/ # Don't sed a call to any commands
+        return if m.message.to_s =~ /^![a-zA-Z]/ # Don't sed a call to any commands
         return if m.user == @bot
-        
+
         json = { :nick => m.user.nick, :message => m.message }.to_json
 
         $redis.lpush "#{m.channel}:#{m.user.nick}:messages", json
