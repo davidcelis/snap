@@ -3,7 +3,7 @@ require 'json'
 
 module Stark
   module Plugins
-    class Sed
+    class S
       include Cinch::Plugin
     
       match /s\/(.+)\/(.*)\/([ig]+)?/

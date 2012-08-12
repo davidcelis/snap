@@ -24,8 +24,9 @@ bot = Cinch::Bot.new do
       Stark::Plugins::JoinPart,
       Stark::Plugins::LMGTFY,
       Stark::Plugins::MessageHistory,
-      Stark::Plugins::Sed,
-      Stark::Plugins::Seen
+      Stark::Plugins::S,
+      Stark::Plugins::Seen,
+      Stark::Plugins::Usage
     ]
 
     config.plugins.options[Cinch::Plugins::Identify] = {
