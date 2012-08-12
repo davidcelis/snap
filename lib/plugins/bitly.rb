@@ -11,9 +11,9 @@ module Stark
       def initialize(*args)
         super
 
-        auth = YAML::load_file(File.join(File.dirname(__FILE__), 'config', 'auth.yml'))
-        @api_key = auth['bitly']['api_key']
-        @api_user = auth['bitly']['user']
+        auth = YAML::load_file(File.join(File.dirname(__FILE__), '..', '..', 'config', 'auth.yml'))
+        @api_key = auth['auth']['bitly']['api_key']
+        @api_user = auth['auth']['bitly']['user']
       end
 
       listen_to :channel
