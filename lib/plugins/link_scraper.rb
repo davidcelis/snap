@@ -36,7 +36,7 @@ module Stark
             hits = page.search("//span[@class='watch-view-count']/strong").text.gsub(',', '')
             ratings = page.search("//span[@class='video-extras-likes-dislikes']").text.strip.gsub(/(\d),(\d)/, '\1\2')
 
-            m.reply "#{title} - #{hits} views - #{ratings}"
+            m.reply "#{title} (#{hits} views, #{ratings})"
           when 'gist.github.com'
             owner = page.search("//div[@class='name']/a").inner_html
             date = page.search("//span[@class='date']/time").first.text
