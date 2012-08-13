@@ -23,8 +23,7 @@ module Stark
           begin
             uri = URI.parse(link)
             page = @agent.get(link)
-          rescue Mechanize::ResponseCodeError
-            m.reply "Your link is broken, #{m.user.nick}."
+          rescue URI::InvalidURIError, Mechanize::ResponseCodeError
             next
           end
 
