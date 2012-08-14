@@ -1,4 +1,5 @@
 require 'mechanize'
+require 'fastimage'
 require 'json'
 
 module Stark
@@ -25,6 +26,11 @@ module Stark
             page = @agent.get(link)
           rescue URI::InvalidURIError, Mechanize::ResponseCodeError
             next
+          end
+
+          if page.is_a?(Mechanize::Image)
+            size = FastImage.size(page.body_io)
+            m.reply "#{page.filename} - #{size[0]}x#{size[1]}" and return
           end
 
           title = page.title.strip
