@@ -44,7 +44,7 @@ module Stark
 
             m.reply "#{title} posted by #{owner} on #{date}."
           when 'twitter.com'
-            if link =~ /\/([^\/]+)\/status\/(\d+)$/
+            if link =~ /\/([^\/]+)\/status(?:es)\/(\d+)$/
               user = $1
               json      = @agent.get("https://api.twitter.com/1/statuses/show/#{$2}.json?trim_user=1").body
               tweet     = JSON.parse(json)
