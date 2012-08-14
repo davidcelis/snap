@@ -27,7 +27,7 @@ module Stark
             next
           end
 
-          title = page.title
+          title = page.title.strip
 
           case uri.host
           when 'www.youtube.com'
