@@ -54,10 +54,10 @@ module Stark
 
               m.reply "@#{user}: #{unescaped} (at #{time})"
             else
-              m.reply "Title: #{title} (at #{uri.host})"
+              m.reply "#{title} (at #{uri.host})"
             end
           else
-            m.reply "Title: #{title} (at #{uri.host})"
+            m.reply "#{title} (at #{uri.host})"
           end
         end
       end
