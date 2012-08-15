@@ -22,6 +22,7 @@ bot = Cinch::Bot.new do
       Stark::Plugins::Disapprove,
       Stark::Plugins::Google,
       Stark::Plugins::JoinPart,
+      Stark::Plugins::Karma,
       Stark::Plugins::LinkScraper,
       Stark::Plugins::LMGTFY,
       Stark::Plugins::MessageHistory,
