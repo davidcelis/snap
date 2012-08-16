@@ -14,7 +14,7 @@ module Stark
 
       def upvote(m, nick)
         user = User(nick)
-        m.reply "Nice try, #{nick}. ಠ_ಠ" and return if user.nil? || user == m.user
+        m.reply "Nice try, #{nick}. ಠ_ಠ" and return if user == m.user
 
         karma = $redis.incr("#{m.channel}:#{nick.downcase}:karma")
         m.reply "#{nick} #{UPVOTE_MESSAGES.sample} Karma: #{karma}."
@@ -22,7 +22,7 @@ module Stark
 
       def downvote(m, nick)
         user = User(nick)
-        m.reply "Nice try, #{nick}. ಠ_ಠ" and return if user.nil? || user == m.user
+        m.reply "Nice try, #{nick}. ಠ_ಠ" and return if user == m.user
 
         karma = $redis.decr("#{m.channel}:#{nick.downcase}:karma")
         m.reply "#{nick} #{DOWNVOTE_MESSAGES.sample} Karma: #{karma}."
