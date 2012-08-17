@@ -24,6 +24,7 @@ module Snap
             Cinch::Plugins::LinkScraper,
             Cinch::Plugins::LMGTFY,
             Cinch::Plugins::MessageHistory,
+            Cinch::Plugins::Ping,
             Cinch::Plugins::S,
             Cinch::Plugins::Seen
           ]
