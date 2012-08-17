@@ -7,7 +7,7 @@ module Cinch
 
       match /ping/
     
-      def execute(m, list)
+      def execute(m)
         m.reply "Pong!", true
       end
     end
