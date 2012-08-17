@@ -5,7 +5,7 @@ require 'daemons'
 require 'redis'
 require_relative '../lib/snap'
 
-class Bot < Thor
+class ThorBot < Thor
   desc 'start', 'Starts the bot'
   method_option :nick, :aliases => '-n', :required => true, :type => :string
   method_option :server, :aliases => '-s', :default => 'irc.freenode.net', :type => :string
@@ -18,7 +18,7 @@ class Bot < Thor
   def start
     if options[:daemonize]
       Daemons.daemonize
-      File.open('/tmp/irc-bot.pid', 'w') { |f| f.puts(Process.pid) }
+      File.open('/tmp/snapbot.pid', 'w') { |f| f.puts(Process.pid) }
     end
 
     bot = Snap::Bot.new(options)
@@ -34,8 +34,8 @@ class Bot < Thor
 
   desc 'stop', 'Used to stop a daemonized bot'
   def stop
-    %x(cat /tmp/irc-bot.pid | xargs kill)
+    %x(cat /tmp/snapbot.pid | xargs kill)
   end
 end
 
-Bot.start
+ThorBot.start
