@@ -20,7 +20,7 @@ Options:
   -n, --nick=NICK                 
   -s, [--server=SERVER]           
                                   # Default: irc.freenode.net
-  -c, [--channels=one two three]  
+  -c, [--channels=\#freenode \#cinch-bots]  
   -u, [--username=USERNAME]       
   -p, [--password=PASSWORD]       
       [--redis-host=REDIS_HOST]   
@@ -35,4 +35,10 @@ To stop a daemonized bot:
 ```bash
 Usage:
   bot stop
+```
+
+Certain commands respond only to admins (such as `!join`, `!part`, and `!say`). To define your list of admins, create a file `config/auth.yml`:
+
+```yaml
+admins: ['davidcelis', 'fredjones']
 ```
