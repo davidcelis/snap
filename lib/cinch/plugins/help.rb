@@ -7,8 +7,7 @@ module Cinch
 
       USAGE = "This is just way too meta."
 
-      match /usage (\S+)/
-      match /help (\S+)$/
+      match /help(?: (\S+))?/
     
       def execute(m, command)
         usage = case command
