@@ -10,7 +10,7 @@ module Cinch
       match /lod (.+)/
 
       def execute(m, nick)
-        m.reply "#{nick}: You have shamed your house. ಠ_ಠ"
+        m.reply "#{nick}: ಠ_ಠ"
       end
     end
   end

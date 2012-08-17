@@ -10,7 +10,7 @@ module Cinch
       def execute(m, list)
         items = list.split ','
         
-        m.channel.action "reaches into a bag and pulls out #{items.sample.strip}.", true
+        m.channel.action "reaches into a bag and pulls out #{items.sample.strip}."
       end
     end
   end

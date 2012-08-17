@@ -1,5 +1,38 @@
-# EddardStark
+# snap
 
-This is an IRC bot written using [cinchrb/cinch](https://github.com/cinchrb/cinch). It lives in the #reddit-portland channel on irc.freenode.net.
+Snap is an IRC bot written using [cinchrb/cinch](https://github.com/cinchrb/cinch). This code powers a bot currently running in the #reddit-portland channel on `irc.freenode.net`. However, this repository is clonable and runnable using your own configuration options.
 
-All available commands are listed and described in `lib/stark/plugins/`.
+## Requirements
+
+* Ruby
+* bundler
+* Redis
+
+## Usage
+
+To run the bot:
+
+```bash
+Usage:
+  bot start -n, --nick=NICK
+
+Options:
+  -n, --nick=NICK                 
+  -s, [--server=SERVER]           
+                                  # Default: irc.freenode.net
+  -c, [--channels=one two three]  
+  -u, [--username=USERNAME]       
+  -p, [--password=PASSWORD]       
+      [--redis-host=REDIS_HOST]   
+                                  # Default: localhost
+      [--redis-port=N]            
+                                  # Default: 6379
+  -d, [--daemonize]               
+```
+
+To stop a daemonized bot:
+
+```bash
+Usage:
+  bot stop
+```
