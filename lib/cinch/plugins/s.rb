@@ -1,7 +1,7 @@
 require 'cinch'
 require 'json'
 
-module Stark
+module Cinch
   module Plugins
     class S
       include Cinch::Plugin

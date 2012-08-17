@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'cinch'
 
-module Stark
+module Cinch
   module Plugins
     class Disapprove
       include Cinch::Plugin

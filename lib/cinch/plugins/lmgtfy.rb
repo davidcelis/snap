@@ -1,6 +1,6 @@
 require 'cinch'
 
-module Stark
+module Cinch
   module Plugins
     class LMGTFY
       include Cinch::Plugin

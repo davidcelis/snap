@@ -1,6 +1,6 @@
 require 'cinch'
 
-module Stark
+module Cinch
   module Plugins
     class Choose
       include Cinch::Plugin
@@ -10,7 +10,7 @@ module Stark
       def execute(m, list)
         items = list.split ','
         
-        m.reply "The answer is #{items.sample.strip}. It is known.", true
+        m.channel.action "reaches into a bag and pulls out #{items.sample.strip}.", true
       end
     end
   end

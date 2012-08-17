@@ -2,7 +2,7 @@ require 'mechanize'
 require 'fastimage'
 require 'json'
 
-module Stark
+module Cinch
   module Plugins
     class LinkScraper
       include Cinch::Plugin
@@ -18,7 +18,7 @@ module Stark
       listen_to :channel
 
       def listen(m)
-        return if m.user == @bot
+        return if m.user == @bot || m.user.nil?
         
         URI.extract(m.message) do |link|
           begin

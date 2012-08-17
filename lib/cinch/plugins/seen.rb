@@ -1,6 +1,6 @@
 require 'cinch'
 
-module Stark
+module Cinch
   module Plugins
     class Seen
       class SeenStruct < Struct.new(:who, :where, :what, :time)

@@ -3,7 +3,7 @@ require 'open-uri'
 require 'nokogiri'
 require 'cgi'
 
-module Stark
+module Cinch
   module Plugins
     class Google
       include Cinch::Plugin

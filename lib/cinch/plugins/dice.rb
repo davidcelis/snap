@@ -1,6 +1,6 @@
 require 'cinch'
 
-module Stark
+module Cinch
   module Plugins
     class Dice
       include Cinch::Plugin
