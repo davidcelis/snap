@@ -5,10 +5,10 @@ module Cinch
     class Say
       include Cinch::Plugin
 
-      match /say "(.+)" in (\S+)/
+      match /say (\S+) (.+)/
     
-      def execute(m, message, channel)
-        Channel(channel).msg(msg) if admin?(m.user)
+      def execute(m, channel, message)
+        Channel(channel).msg(message) if @bot.admin?(m.user)
       end
     end
   end

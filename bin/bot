@@ -23,7 +23,7 @@ class ThorBot < Thor
 
     bot = Snap::Bot.new(options)
     bot.redis = Redis.new(:host => options[:redis_host], :port => options[:redis_port])
-    auth = File.join(File.dirname(__FILE__), 'config', 'auth.yml')
+    auth = File.join(File.dirname(__FILE__), '..', 'config', 'auth.yml')
 
     if File.exist?(auth)
       bot.admins = YAML::load_file(auth)['admins']
