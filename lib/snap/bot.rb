@@ -5,7 +5,6 @@ module Snap
   class Bot < Cinch::Bot
     def initialize(options = {})
       super() do
-        puts options.inspect
         configure do |config|
           config.server = options[:server]
           config.channels = options[:channels]
@@ -26,6 +25,7 @@ module Snap
             Cinch::Plugins::MessageHistory,
             Cinch::Plugins::Ping,
             Cinch::Plugins::S,
+            Cinch::Plugins::Say,
             Cinch::Plugins::Seen
           ]
 
@@ -45,10 +45,6 @@ module Snap
         def admin?(user)
           user.refresh
           admins.include?(user.authname)
-        end
-
-        on :private, /^!say "(.+?)" in (#.+)$/ do |m, msg, channel|
-          Channel(channel).msg(msg) if admin?(m.user)
         end
       end
     end

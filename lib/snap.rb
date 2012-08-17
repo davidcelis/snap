@@ -15,6 +15,7 @@ require 'cinch/plugins/lmgtfy'
 require 'cinch/plugins/message_history'
 require 'cinch/plugins/ping'
 require 'cinch/plugins/s'
+require 'cinch/plugins/say'
 require 'cinch/plugins/seen'
 
 require 'snap/bot'

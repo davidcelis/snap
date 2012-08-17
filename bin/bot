@@ -34,7 +34,12 @@ class ThorBot < Thor
 
   desc 'stop', 'Used to stop a daemonized bot'
   def stop
-    %x(cat /tmp/snapbot.pid | xargs kill)
+    if File.exist?('/tmp/snapbot.pid')
+      %x(cat /tmp/snapbot.pid | xargs kill)
+      %x(rm /tmp/snapbot.pid)
+    else
+      puts 'Snap is not currently running.'
+    end
   end
 end
 
