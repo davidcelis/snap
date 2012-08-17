@@ -5,6 +5,8 @@ module Cinch
     class Dice
       include Cinch::Plugin
     
+      USAGE = "Roll some dice. Example: !roll 4d6+3"
+
       match /roll (?:(\d+))?d(\d+)(?:([+-])(\d+))?/
     
       def execute(m, rolls, sides, operator, offset)

@@ -5,6 +5,8 @@ module Cinch
     class Choose
       include Cinch::Plugin
     
+      USAGE = "Allow me to make a decision for you. Example: !choose several, comma separated, things"
+
       match /choose (.+)/
     
       def execute(m, list)

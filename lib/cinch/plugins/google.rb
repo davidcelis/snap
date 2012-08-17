@@ -7,6 +7,9 @@ module Cinch
   module Plugins
     class Google
       include Cinch::Plugin
+
+      USAGE = "Do you feel lucky, punk? Example: !google how to make friends"
+
       match /google (.+)/
     
       def search(query)

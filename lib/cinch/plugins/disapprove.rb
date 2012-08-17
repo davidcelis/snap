@@ -6,6 +6,8 @@ module Cinch
     class Disapprove
       include Cinch::Plugin
 
+      USAGE = "Share the hate. Example: !disapprove davidcelis <OR> !lod davidcelis"
+
       match /disapprove (.+)/
       match /lod (.+)/
 

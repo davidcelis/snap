@@ -18,14 +18,14 @@ module Snap
             Cinch::Plugins::Dice,
             Cinch::Plugins::Disapprove,
             Cinch::Plugins::Google,
+            Cinch::Plugins::Help,
             Cinch::Plugins::JoinPart,
             Cinch::Plugins::Karma,
             Cinch::Plugins::LinkScraper,
             Cinch::Plugins::LMGTFY,
             Cinch::Plugins::MessageHistory,
             Cinch::Plugins::S,
-            Cinch::Plugins::Seen,
-            Cinch::Plugins::Usage
+            Cinch::Plugins::Seen
           ]
 
           config.plugins.options[Cinch::Plugins::Identify] = {
@@ -44,10 +44,6 @@ module Snap
         def admin?(user)
           user.refresh
           admins.include?(user.authname)
-        end
-
-        on :message, /^!ping$/ do |m|
-          m.reply "#{m.user.nick}: pong!"
         end
 
         on :private, /^!say "(.+?)" in (#.+)$/ do |m, msg, channel|

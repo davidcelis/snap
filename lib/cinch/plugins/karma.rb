@@ -9,6 +9,8 @@ module Cinch
       UPVOTE_MESSAGES = ['leveled up!', 'is on the rise!', '+1!', 'gained a level!']
       DOWNVOTE_MESSAGES = ['lost a level.', 'took a hit! Ouch.', 'took a hit.', 'lost a life.']
 
+      USAGE = "Get the karma score for someone or something. Example: !karma davidcelis"
+
       match /karma (\S+)/, :method => :karma_check
       match /(\S+)\+\+/, :use_prefix => false, :method => :upvote
       match /(\S+)\-\-/, :use_prefix => false, :method => :downvote

@@ -5,6 +5,8 @@ module Cinch
   module Plugins
     class S
       include Cinch::Plugin
+
+      USAGE = "String replacement. Supports g (global) and i (case insensitive) flags. Example: !s/teh/the/i"
     
       match /s\/(.+)\/(.*)\/([ig]+)?/
     
