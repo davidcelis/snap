@@ -16,11 +16,11 @@ module Cinch
         @bot.redis.lpush "#{m.channel}:#{m.user.nick}:messages", json
         @bot.redis.lpush "#{m.channel}:messages", json
 
-        until @bot.redis.llen("#{m.channel}:#{m.user.nick}:messages").to_i < 11
+        if @bot.redis.llen("#{m.channel}:#{m.user.nick}:messages").to_i > config[:user_messages]
           @bot.redis.rpop "#{m.channel}:#{m.user.nick}:messages"
         end
 
-        until @bot.redis.llen("#{m.channel}:messages").to_i < 100
+        if @bot.redis.llen("#{m.channel}:messages").to_i > config[:channel_messages]
           @bot.redis.rpop "#{m.channel}:messages"
         end 
       end

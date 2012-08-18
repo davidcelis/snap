@@ -34,6 +34,11 @@ module Snap
             :password => options[:password],
             :type     => :nickserv
           }
+
+          config.plugins.options[Cinch::Plugins::MessageHistory] = {
+            :user_messages => 10,
+            :channel_messages => 25
+          }
         end
 
         def redis=(redis) @redis = redis end
