@@ -9,6 +9,10 @@ module Cinch
 
       match /roll (?:(\d+))?d(\d+)(?:([+-])(\d+))?/
     
+      # Roll one or more dice, RPG style.
+      #
+      # <davidcelis> !roll 2d6+4
+      # * snap casts the dice and rolls a 13
       def execute(m, rolls, sides, operator, offset)
         score = 0
     

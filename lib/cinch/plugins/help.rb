@@ -9,6 +9,11 @@ module Cinch
 
       match /help(?: (\S+))?/
     
+      # A basic usage command. Lists commands or, when passed a command, provides
+      # usage tips for that command.
+      # 
+      # <davidcelis> !help s
+      # <snap> String replacement. Supports g (global) and i (case insensitive) flags. Example: !s/teh/the/i
       def execute(m, command)
         usage = case command
                 when 'choose'              then Cinch::Plugins::Choose::USAGE

@@ -5,7 +5,7 @@ module Cinch
     class Seen
       class SeenStruct < Struct.new(:who, :where, :what, :time)
         def to_s
-          "[#{time.asctime}] #{who} was last seen in #{where} saying #{what}"
+          "[#{time.asctime}] #{who} was last seen in #{where} saying '#{what}'"
         end
       end
     
@@ -25,6 +25,11 @@ module Cinch
         @users[m.user.nick] = SeenStruct.new(m.user, m.channel, m.message, Time.now)
       end
     
+      # Report the last time a specified user was seen, what they said, and
+      # where they said it.
+      # 
+      # <davidcelis> !seen gary_oak
+      # <snap> [Mon Aug 20 10:39:47 2012] gary_oak was last seen saying 'Smell ya later'
       def execute(m, nick)
         if nick == @bot.nick
           m.reply "I haven't been able to see myself since I ascended to a higher plane and became a space robot."

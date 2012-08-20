@@ -7,6 +7,10 @@ module Cinch
 
       match /ping/
     
+      # An easy check to see if the bot is responding to basic commands.
+      #
+      # <davidcelis> !ping
+      # <snap> davidcelis: Pong!
       def execute(m)
         m.reply "Pong!", true
       end

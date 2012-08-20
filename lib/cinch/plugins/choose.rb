@@ -9,6 +9,10 @@ module Cinch
 
       match /choose (.+)/
     
+      # Takes a simple list of comma separated items and chooses one at random.
+      #
+      # <davidcelis> !choose tea, coffee, disgusting energy drink
+      # * snap reaches into a bag and pulls out coffee.
       def execute(m, list)
         items = list.split ','
         

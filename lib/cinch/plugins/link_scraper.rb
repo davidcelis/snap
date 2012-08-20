@@ -17,6 +17,16 @@ module Cinch
 
       listen_to :channel
 
+      # Listens to all incoming messages in the channel for links. Grabs the
+      # first parsable link out of a message that it can and loads it for
+      # certain attributes. Basic pages will retrieve a title and the host
+      # domain. YouTube links will be parsed for likes/dislikes/views. Tweets
+      # will be parsed and returned to the channel. Images will have their
+      # dimensions and file name fetched. Gists will be parsed for their owner
+      # and post date.
+      #
+      # <davidcelis> I didn't know they did this: http://imgur.com/jYjq8
+      # <snap> Voodoo Doughnuts sold me a bucket of "extra" doughnuts for $5! - Imgur (at imgur.com)
       def listen(m)
         return if m.user == @bot || m.user.nil?
         

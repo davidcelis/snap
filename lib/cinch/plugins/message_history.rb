@@ -7,6 +7,8 @@ module Cinch
 
       listen_to :channel
 
+      # Stores the last few messages each user has sent to the channel, as well
+      # as a global list of messages. This is configured in lib/snap/bot.rb
       def listen(m)
         return if m.message.to_s =~ /^![a-zA-Z]/ # Don't sed a call to any commands
         return if m.user == @bot

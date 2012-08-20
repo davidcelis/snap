@@ -11,6 +11,10 @@ module Cinch
       match /disapprove (.+)/
       match /lod (.+)/
 
+      # Disapprove of another channel member.
+      #
+      # <davidcelis> !disapprove clueless
+      # <snap> clueless: ಠ_ಠ
       def execute(m, nick)
         m.reply "#{nick}: ಠ_ಠ"
       end
