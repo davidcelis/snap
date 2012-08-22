@@ -18,9 +18,8 @@ module Cinch
           res = Nokogiri::HTML(open(url)).at("h3.r")
       
           title = res.text
-          link = res.at('a')[:href]
           desc = res.at("./following::div").children.first.text
-          CGI.unescape_html "#{title} - #{desc} (#{link})"
+          CGI.unescape_html "#{title} - #{desc}"
         rescue
           "No results found"
         end
@@ -30,9 +29,7 @@ module Cinch
       #
       # <davidcelis> !google ruby yard guide
       # <snap> YARD - Guide: Writing a Handler for Custom Ruby Syntax (DSL) -
-      # yardoc.org/guides/extending-yard/writing-handlers.html - Cached -
-      # Similar (/url?q=http://yardoc.org/guides/extending-yard/writing-handlers
-      # .html&sa=U&ei=gYMyUPz3OczbiwKmx4CoBw&ved=0CBQQFjAA&usg=AFQjCNEcUeaCxxTO5Bs64THc-SI3E4AyyA)
+      # yardoc.org/guides/extending-yard/writing-handlers.html
       def execute(m, query)
         m.reply(search(query))
       end
