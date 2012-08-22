@@ -19,6 +19,7 @@ module Cinch
       
           title = res.text
           desc = res.at("./following::div").children.first.text
+          puts desc
           CGI.unescape_html "#{title} - #{desc}"
         rescue
           "No results found"
