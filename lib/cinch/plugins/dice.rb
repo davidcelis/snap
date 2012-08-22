@@ -23,7 +23,7 @@ module Cinch
     
         score.send(operator, offset) if operator && offset
     
-        inflection = sides > 1 ? 'dice' : 'die'
+        inflection = rolls > 1 ? 'dice' : 'die'
         puts sides
         m.channel.action "casts the #{inflection} and rolls a #{score}"
       end

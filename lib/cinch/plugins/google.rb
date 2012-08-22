@@ -16,10 +16,13 @@ module Cinch
         begin
           url = "http://www.google.com/search?q=#{CGI.escape(query)}"
           res = Nokogiri::HTML(open(url)).at("h3.r")
-      
+
           title = res.text
-          desc = res.at("./following::div").children.first.text
-          puts desc
+
+          res = res.ancestors[0].at("div.s")
+          link = res.at("./div").children[0].text
+          desc = res.children[1].text
+          
           CGI.unescape_html "#{title} - #{desc}"
         rescue
           "No results found"
