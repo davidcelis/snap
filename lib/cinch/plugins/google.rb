@@ -23,7 +23,7 @@ module Cinch
           link = res.at("./div").children[0].text
           desc = res.children[1].text
           
-          CGI.unescape_html "#{title} - #{desc}"
+          CGI.unescape_html "#{title} - #{desc} (#{link})"
         rescue
           "No results found"
         end
