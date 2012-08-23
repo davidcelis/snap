@@ -20,7 +20,7 @@ module Cinch
       # <davidcelis> !karma davidcelis
       # <snap> Karma for davidcelis: 12
       def karma_check(m, nick)
-        karma = $redis.get("#{m.channel}:#{nick.downcase}:karma")
+        karma = @bot.redis.get("#{m.channel}:#{nick.downcase}:karma")
         m.reply "Karma for #{nick}: #{karma}"
       end
 
@@ -33,7 +33,7 @@ module Cinch
         user = User(nick)
         m.reply "Nice try, #{nick}. ಠ_ಠ" and return if user == m.user
 
-        karma = $redis.incr("#{m.channel}:#{nick.downcase}:karma")
+        karma = @bot.redis.incr("#{m.channel}:#{nick.downcase}:karma")
         m.reply "#{nick} #{UPVOTE_MESSAGES.sample} Karma: #{karma}."
       end
 
@@ -46,7 +46,7 @@ module Cinch
         user = User(nick)
         m.reply "Nice try, #{nick}. ಠ_ಠ" and return if user == m.user
 
-        karma = $redis.decr("#{m.channel}:#{nick.downcase}:karma")
+        karma = @bot.redis.decr("#{m.channel}:#{nick.downcase}:karma")
         m.reply "#{nick} #{DOWNVOTE_MESSAGES.sample} Karma: #{karma}."
       end
     end

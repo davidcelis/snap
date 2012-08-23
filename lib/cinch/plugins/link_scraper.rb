@@ -1,6 +1,7 @@
 require 'mechanize'
 require 'fastimage'
 require 'json'
+require 'cgi'
 
 module Cinch
   module Plugins
@@ -40,7 +41,8 @@ module Cinch
 
           if page.is_a?(Mechanize::Image)
             size = FastImage.size(page.body_io)
-            m.reply "#{page.filename} - #{size[0]}x#{size[1]}" and return
+            name = CGI.unescape(page.filename)
+            m.reply "#{name} - #{size[0]}x#{size[1]}" and return
           end
 
           title = page.title.strip
