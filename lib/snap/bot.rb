@@ -12,12 +12,12 @@ module Snap
           config.user = options[:username]
 
           config.plugins.plugins = [
-            Cinch::Plugins::Identify,
             Cinch::Plugins::Choose,
             Cinch::Plugins::Dice,
             Cinch::Plugins::Disapprove,
             Cinch::Plugins::Google,
             Cinch::Plugins::Help,
+            Cinch::Plugins::Identify,
             Cinch::Plugins::JoinPart,
             Cinch::Plugins::Karma,
             Cinch::Plugins::LinkScraper,
@@ -26,8 +26,11 @@ module Snap
             Cinch::Plugins::Ping,
             Cinch::Plugins::S,
             Cinch::Plugins::Say,
-            Cinch::Plugins::Seen
+            Cinch::Plugins::Seen,
+            Cinch::Plugins::Yelp
           ]
+
+          @auth = YAML.load_file(File.join(File.dirname(__FILE__), '..', '..', 'config', 'auth.yml'))
 
           config.plugins.options[Cinch::Plugins::Identify] = {
             :username => options[:username],
@@ -39,13 +42,16 @@ module Snap
             :user_messages => 10,
             :channel_messages => 25
           }
+
+          config.plugins.options[Cinch::Plugins::Yelp] = @auth['yelp']
         end
 
         def redis=(redis) @redis = redis end
         def redis() @redis end
 
-        def admins=(admins) @admins = admins end
-        def admins() @admins end
+        def admins
+          @admins ||= @auth['admins']
+        end
 
         def admin?(user)
           user.refresh

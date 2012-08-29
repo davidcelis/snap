@@ -17,5 +17,6 @@ require 'cinch/plugins/ping'
 require 'cinch/plugins/s'
 require 'cinch/plugins/say'
 require 'cinch/plugins/seen'
+require 'cinch/plugins/yelp'
 
 require 'snap/bot'

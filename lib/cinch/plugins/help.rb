@@ -26,8 +26,9 @@ module Cinch
                 when 'lod'                 then Cinch::Plugins::Disapprove::USAGE
                 when 's'                   then Cinch::Plugins::S::USAGE
                 when 'seen'                then Cinch::Plugins::Seen::USAGE
+                when 'yelp'                then Cinch::Plugins::Yelp::USAGE
                 else
-                  "I respond to the following commands (preceded by a !): choose, roll, disapprove, google, help, karma, lod, lmgtfy, s, seen. For more info, pass a command to !help"
+                  "I respond to the following commands (preceded by a !): choose, roll, disapprove, google, help, karma, lod, lmgtfy, s, seen, yelp. For more info, pass a command to !help"
                 end
         m.reply(usage)
       end
