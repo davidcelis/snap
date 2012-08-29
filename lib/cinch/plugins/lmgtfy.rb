@@ -8,7 +8,7 @@ module Cinch
       USAGE = "Oh, let me google that for you. Example: !lmgtfy your stupid question"
 
       match /lmgtfy (.+)/
-    
+
       # Drown a user in your hatred for their inability to google their own
       # simple questions.
       #

@@ -8,26 +8,26 @@ module Cinch
           "[#{time.asctime}] #{who} was last seen in #{where} saying '#{what}'"
         end
       end
-    
+
       include Cinch::Plugin
 
       USAGE = "The last time I saw somebody in this channel. Example: !seen davidcelis"
 
       listen_to :channel
       match /seen (.+)/
-    
+
       def initialize(*args)
         super
         @users = {}
       end
-    
+
       def listen(m)
         @users[m.user.nick] = SeenStruct.new(m.user, m.channel, m.message, Time.now)
       end
-    
+
       # Report the last time a specified user was seen, what they said, and
       # where they said it.
-      # 
+      #
       # <davidcelis> !seen gary_oak
       # <snap> [Mon Aug 20 10:39:47 2012] gary_oak was last seen saying 'Smell ya later'
       def execute(m, nick)

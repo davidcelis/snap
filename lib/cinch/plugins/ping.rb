@@ -6,7 +6,7 @@ module Cinch
       include Cinch::Plugin
 
       match /ping/
-    
+
       # An easy check to see if the bot is responding to basic commands.
       #
       # <davidcelis> !ping

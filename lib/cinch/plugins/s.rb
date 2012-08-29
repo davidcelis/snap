@@ -7,9 +7,9 @@ module Cinch
       include Cinch::Plugin
 
       USAGE = "String replacement. Supports g (global) and i (case insensitive) flags. Example: !s/teh/the/i"
-    
+
       match /s\/(.+)\/(.*)\/([ig]+)?/
-    
+
       # Replace a part of one of your previous messages. Specifying the 'i' flag
       # at the end of your regular expression group will execute a case
       # insensitive search. Specifying the 'g' flag will search through the global
@@ -44,7 +44,7 @@ module Cinch
 
         message = found['message'].gsub(regex, replacement)
         nick = found['nick']
-    
+
         m.reply "#{nick} actually meant: #{message}"
       end
     end

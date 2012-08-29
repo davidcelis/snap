@@ -4,10 +4,10 @@ module Cinch
   module Plugins
     class JoinPart
       include Cinch::Plugin
-    
+
       match /join (.+)/, :method => :join
       match /part(?: (.+))?/, :method => :part
-    
+
       # Tell the bot to join the channel. Responds only to admins.
       #
       # <davidcelis> !join #cinch-bots
@@ -16,7 +16,7 @@ module Cinch
         return unless @bot.admin?(m.user)
         Channel(channel).join
       end
-    
+
       # Tell the bot to part the current channel or a passed channel. Responds
       # only to admins.
       #

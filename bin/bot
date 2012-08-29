@@ -16,17 +16,17 @@ class ThorBot < Thor
   method_option :redis_port, :type => :numeric, :default => 6379
   method_option :daemonize, :aliases => '-d', :default => false, :type => :boolean
   def start
-    if options[:daemonize]
-      Daemons.daemonize
-      File.open('/tmp/snapbot.pid', 'w') { |f| f.puts(Process.pid) }
-    end
-
     bot = Snap::Bot.new(options)
     bot.redis = Redis.new(:host => options[:redis_host], :port => options[:redis_port])
     auth = File.join(File.dirname(__FILE__), '..', 'config', 'auth.yml')
 
     if File.exist?(auth)
       bot.admins = YAML::load_file(auth)['admins']
+    end
+
+    if options[:daemonize]
+      Daemons.daemonize
+      File.open('/tmp/snapbot.pid', 'w') { |f| f.puts(Process.pid) }
     end
 
     bot.start

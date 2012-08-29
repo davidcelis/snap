@@ -8,10 +8,10 @@ module Cinch
       USAGE = "This is just way too meta."
 
       match /help(?: (\S+))?/
-    
+
       # A basic usage command. Lists commands or, when passed a command, provides
       # usage tips for that command.
-      # 
+      #
       # <davidcelis> !help s
       # <snap> String replacement. Supports g (global) and i (case insensitive) flags. Example: !s/teh/the/i
       def execute(m, command)
@@ -26,7 +26,7 @@ module Cinch
                 when 'lod'                 then Cinch::Plugins::Disapprove::USAGE
                 when 's'                   then Cinch::Plugins::S::USAGE
                 when 'seen'                then Cinch::Plugins::Seen::USAGE
-                else 
+                else
                   "I respond to the following commands (preceded by a !): choose, roll, disapprove, google, help, karma, lod, lmgtfy, s, seen. For more info, pass a command to !help"
                 end
         m.reply(usage)

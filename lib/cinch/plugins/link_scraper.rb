@@ -30,7 +30,7 @@ module Cinch
       # <snap> Voodoo Doughnuts sold me a bucket of "extra" doughnuts for $5! - Imgur (at imgur.com)
       def listen(m)
         return if m.user == @bot || m.user.nil?
-        
+
         URI.extract(m.message) do |link|
           begin
             uri = URI.parse(link)

@@ -24,7 +24,7 @@ module Cinch
 
         if @bot.redis.llen("#{m.channel}:messages").to_i > config[:channel_messages]
           @bot.redis.rpop "#{m.channel}:messages"
-        end 
+        end
       end
     end
   end
