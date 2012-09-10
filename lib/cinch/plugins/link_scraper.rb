@@ -48,7 +48,8 @@ module Cinch
           title = page.title.strip
 
           case uri.host
-          when 'www.youtube.com' || 'youtu.be'
+          when 'www.youtube.com', 'youtu.be'
+            link = 'http://youtube.com/watch?v=' + link.split('/').last
             page = @agent.get(link + '&nofeather=True')
 
             title = page.title.strip.gsub("- YouTube", '').strip
