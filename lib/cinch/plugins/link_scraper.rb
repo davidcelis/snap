@@ -49,7 +49,7 @@ module Cinch
 
           case uri.host
           when 'www.youtube.com', 'youtu.be'
-            link = 'http://youtube.com/watch?v=' + link.split('/').last
+            link = 'http://youtube.com/watch?v=' + link.split('/').last if uri.host == 'youtu.be'
             page = @agent.get(link + '&nofeather=True')
 
             title = page.title.strip.gsub("- YouTube", '').strip

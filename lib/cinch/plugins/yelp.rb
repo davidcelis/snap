@@ -33,7 +33,7 @@ module Cinch
         response = @client.search(request)
 
         m.reply("Oops, Yelp didn't understand that location!", true) and return if response['error']
-        m.reply("Sorry, Yelp doesn't have any businesses matching #{query} near #{location}!") and return if response['businesses'].empty?
+        m.reply("Sorry, Yelp doesn't have any businesses matching \"#{query}\" near \"#{location}\"!") and return if response['businesses'].empty?
 
         business = response['businesses'].sample
         name = business['name']
