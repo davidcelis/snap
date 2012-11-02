@@ -14,6 +14,7 @@ module Cinch
       # <davidcelis> !roll 2d6+4
       # * snap casts the dice and rolls a 13
       def execute(m, rolls, sides, operator, offset)
+        rolls, sides = rolls.to_i, sides.to_i
         rolls = rolls && rolls > 0 ? rolls : 1
         sides = sides && sides > 0 ? sides : 20
         rolls, sides, offset = rolls.to_i, sides.to_i, offset.to_i
