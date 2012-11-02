@@ -9,25 +9,24 @@ module Cinch
 
       match /roll(?: (?:(\d+))?d(\d+)(?:([+-])(\d+))?)?/
 
-      # Roll one or more dice, RPG style. Default is 1d20.
+      # Roll one or more dice, RPG style. Default is 1d20. 
       #
       # <davidcelis> !roll 2d6+4
       # * snap casts the dice and rolls a 13
       def execute(m, rolls, sides, operator, offset)
-        rolls ||= 1
-        sides ||= 20
+        rolls = rolls && rolls > 0 ? rolls : 1
+        sides = sides && sides > 0 ? sides : 20
         rolls, sides, offset = rolls.to_i, sides.to_i, offset.to_i
 
         score = 0
 
         rolls.times do
-          score += rand(sides)
+          score += (rand(sides) + 1)
         end
 
         score.send(operator, offset) if operator && offset
 
         inflection = rolls > 1 ? 'dice' : 'die'
-        puts sides
         m.channel.action "casts the #{inflection} and rolls a #{score}"
       end
     end
