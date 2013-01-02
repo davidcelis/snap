@@ -53,10 +53,11 @@ module Cinch
             page = @agent.get(link + '&nofeather=True')
 
             title = page.title.strip.gsub("- YouTube", '').strip
-            hits = page.search("//span[@class='watch-view-count']/strong").text.gsub(',', '')
-            ratings = page.search("//span[@class='video-extras-likes-dislikes']").text.strip.gsub(/(\d),(\d)/, '\1\2')
+            hits = page.search("//span[@class='watch-view-count']").text.gsub(',', '').strip
+            ratings = page.search("//span[@class='video-extras-likes-dislikes']").text.strip.split("\n")
+            likes, dislikes = ratings.map(&:strip).map { |text| text.gsub(/[^\d]/, '') }
 
-            m.reply "#{title} (#{hits} views, #{ratings})"
+            m.reply "#{title} (#{hits} views, #{likes} likes, #{dislikes} dislikes)"
           when 'gist.github.com'
             owner = page.search("//div[@class='name']/a").inner_html
             date = page.search("//span[@class='date']/time").first.text
