@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     cinch (2.0.3)
     cinch-identify (1.3.0)

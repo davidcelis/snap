@@ -59,10 +59,10 @@ module Cinch
 
             m.reply "#{title} (#{hits} views, #{likes} likes, #{dislikes} dislikes)"
           when 'gist.github.com'
-            owner = page.search("//div[@class='name']/a").inner_html
-            date = page.search("//span[@class='date']/time").first.text
+            owner = page.search("//span[@class='author vcard']").text.strip
+            time = page.search("//time[@class='js-relative-date']").first.text.strip
 
-            m.reply "#{title} posted by #{owner} on #{date}."
+            m.reply "#{title} (posted by #{owner}, last updated on #{time})"
           when 'twitter.com'
             if link =~ /\/([^\/]+)\/status(?:es)\/(\d+)$/
               user = $1
