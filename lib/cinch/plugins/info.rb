@@ -17,7 +17,7 @@ module Cinch
       # <snap> Let me just jot this down... Okay, davidcelis, you're all set!
       def execute(m, user, info)
         if info
-          update_user(m.user, user, info)
+          update_info(m.user, user, info)
         else
           info = @bot.redis.hget('users:info', user)
           message = info ? "#{user} #{info}" : "#{user} hasn't told me about themselves yet!"
