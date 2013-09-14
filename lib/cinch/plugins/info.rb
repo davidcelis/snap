@@ -17,23 +17,18 @@ module Cinch
       # <snap> Let me just jot this down... Okay, davidcelis, you're all set!
       def execute(m, user, info)
         if info
-          update_info(m.user, user, info)
+          if m.user.nick == user || @bot.admin?(m.user)
+            @bot.redis.hset('users:info', user, info)
+            m.reply "Let me just jot this down... Okay, #{user}, you're all set!"
+          else
+            m.reply "I can't let you do that, #{m.user.nick}."
+          end
         else
           info = @bot.redis.hget('users:info', user)
           message = info ? "#{user} #{info}" : "#{user} hasn't told me about themselves yet!"
           m.reply message
         end
       end
-
-      private
-        def update_info(requester, user, info)
-          if requster.user.nick == user || @bot.admin?(requester.user)
-            @bot.redis.hset('users:info', user, info)
-            m.reply "Let me just jot this down... Okay, #{user}, you're all set!"
-          else
-            m.reply "I can't let you do that, #{m.user.nick}."
-          end
-        end
     end
   end
 end
