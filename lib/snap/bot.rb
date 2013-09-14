@@ -18,6 +18,7 @@ module Snap
             Cinch::Plugins::Google,
             Cinch::Plugins::Help,
             Cinch::Plugins::Identify,
+            Cinch::Plugins::Info,
             Cinch::Plugins::JoinPart,
             Cinch::Plugins::Karma,
             Cinch::Plugins::LinkScraper,

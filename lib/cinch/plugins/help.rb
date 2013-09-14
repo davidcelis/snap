@@ -21,6 +21,7 @@ module Cinch
                 when 'disapprove' || 'lod' then Cinch::Plugins::Disapprove::USAGE
                 when 'google'              then Cinch::Plugins::Google::USAGE
                 when 'help'                then Cinch::Plugins::Help::USAGE
+                when 'info'                then Cinch::Plugins::Info::USAGE
                 when 'karma'               then Cinch::Plugins::Karma::USAGE
                 when 'lmgtfy'              then Cinch::Plugins::LMGTFY::USAGE
                 when 's'                   then Cinch::Plugins::S::USAGE
